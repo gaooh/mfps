@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Results xmlns="mfps">
+	<NumberOfResults />
+	<DisplayPerPage>10</DisplayPerPage>
+	<DisplayFrom>1</DisplayFrom>
+	<APIVersion>1.0</APIVersion>
+	<hCalendar>
+		<fromurl>http://www.gaooh.com/</fromurl>
+		<updateDate>2004-01-01 00:00:00.0</updateDate>
+		<url>http://www.drecom.co.jp</url>
+		<description>ですくりぷちょん</description>
+		<location>ばしょとか</location>
+		<status>状態って</status>
+		<summary>さまってみる</summary>
+		<dtstart>2004-01-01 00:00:00.0</dtstart>
+		<dtstamp />
+		<dtend />
+		<uid />
+	</hCalendar>
+	<hCalendar>
+		<fromurl>http://www.gaooh.com/</fromurl>
+		<updateDate>2004-01-01 00:00:00.0</updateDate>
+		<url>http://www.drecom.co.jp</url>
+		<description>ですくりぷちょん12</description>
+		<location>ばしょとか</location>
+		<status>状態って</status>
+		<summary>さまってみる</summary>
+		<dtstart>2004-01-01 00:00:00.0</dtstart>
+		<dtstamp />
+		<dtend />
+		<uid />
+	</hCalendar>
+	<hCalendar>
+		<fromurl>http://www.gaooh.com/</fromurl>
+		<updateDate>2004-01-01 00:00:00.0</updateDate>
+		<url>http://www.drecom.co.jp</url>
+		<description>ですくりぷちょん213</description>
+		<location>ばしょとか</location>
+		<status>状態って</status>
+		<summary>さまってみる</summary>
+		<dtstart />
+		<dtstamp />
+		<dtend />
+		<uid />
+	</hCalendar>
+	<hCalendar>
+		<fromurl>http://www.gaooh.com/</fromurl>
+		<updateDate>2004-01-01 00:00:00.0</updateDate>
+		<url>http://www.drecom.co.jp</url>
+		<description>ですくりぷちょん213</description>
+		<location>ばしょとか</location>
+		<status>状態って</status>
+		<summary>さまってみる</summary>
+		<dtstart />
+		<dtstamp />
+		<dtend />
+		<uid />
+	</hCalendar>
+	<hCalendar>
+		<fromurl>http://www.gaooh.com/</fromurl>
+		<updateDate>2004-01-01 00:00:00.0</updateDate>
+		<url>http://www.drecom.co.jp</url>
+		<description>ですくりぷちょん</description>
+		<location>ばしょとか</location>
+		<status>状態って</status>
+		<summary>さまってみる</summary>
+		<dtstart />
+		<dtstamp />
+		<dtend />
+		<uid />
+	</hCalendar>
+</Results>

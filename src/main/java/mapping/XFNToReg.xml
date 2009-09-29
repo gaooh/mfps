@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="XFNToReg">
+
+	<typeAlias alias="xfnToReg" type="jp.co.drecom.mfps.model.dto.XFNToRegDto"/>
+
+	<insert id="insert" parameterClass="xfnToReg">
+        <![CDATA[
+            INSERT INTO XFN_TO_REG
+            (
+                XFN_ID,
+				REG_ID
+            )
+            VALUES(
+                #xfnId#,
+                #regId#
+            );
+        ]]>
+
+    </insert>
+</sqlMap>

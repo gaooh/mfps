@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="N">
+
+	<typeAlias alias="n" type="jp.co.drecom.mfps.model.dto.NDto"/>
+
+	<insert id="insert" parameterClass="n">
+        <![CDATA[
+            INSERT INTO HCARD_N
+            (
+                ID,
+                FAMILY_NAME,
+                GIVEN_NAME,
+                ADDITIONAL_NAME,
+				HONORIFIC_PREFIX,
+				HONORIFIC_SUFFIX
+            )
+            VALUES(
+                nextval('n_id_seq'),
+                #familyName#,
+                #givenName#,
+                #additionalName#,
+				#honorificPrefix#,
+                #honorificSuffix#
+            );
+        ]]>
+
+		<selectKey resultClass="long" keyProperty="id">
+            <![CDATA[
+				select currval('n_id_seq')
+			 ]]>
+        </selectKey>
+
+    </insert>
+</sqlMap>

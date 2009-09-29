@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+  <display-name>MicroformatsPingServer Created Web Application</display-name>
+
+  <!-- 複数指定したいときは半角スペースで区切って追加可能 -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/applicationContext.xml</param-value>
+  </context-param>
+
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderServlet</listener-class>
+  </listener>
+
+  <listener>
+  	<listener-class>jp.co.drecom.mfps.listener.MicroformatsPingServerListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>PingReceptServlet</servlet-name>
+    <servlet-class>jp.co.drecom.mfps.recept.PingReceptServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>TopServlet</servlet-name>
+    <servlet-class>jp.co.drecom.mfps.portal.TopServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>PingMeServlet</servlet-name>
+    <servlet-class>jp.co.drecom.mfps.portal.PingMeServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+	  <servlet-name>HCalendarAPIServlet</servlet-name>
+	  <servlet-class>jp.co.drecom.mfps.portal.api.HCalendarAPIServlet</servlet-class>
+	  <init-param>
+	      <param-name>properties</param-name>
+	      <param-value>/WEB-INF/velocity.properties</param-value>
+	  </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>PingReceptServlet</servlet-name>
+    <url-pattern>/PingReceptAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>TopServlet</servlet-name>
+    <url-pattern>/TopAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>PingMeServlet</servlet-name>
+    <url-pattern>/PingMeAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>HCalendarAPIServlet</servlet-name>
+    <url-pattern>/HCalendarAPIAction</url-pattern>
+  </servlet-mapping>
+
+  <jsp-config>
+
+	<taglib>
+	  <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
+	  <taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+	 </taglib>
+	 <taglib>
+	  <taglib-uri>http://java.sun.com/jsp/jstl/xml</taglib-uri>
+	  <taglib-location>/WEB-INF/tld/x.tld</taglib-location>
+	 </taglib>
+	 <taglib>
+	  <taglib-uri>http://java.sun.com/jsp/jstl/fmt</taglib-uri>
+	  <taglib-location>/WEB-INF/tld/fmt.tld</taglib-location>
+	 </taglib>
+	<taglib>
+	  <taglib-uri>http://jakarta.apache.org/taglibs/string</taglib-uri>
+	  <taglib-location>/WEB-INF/tld/taglibs-string.tld</taglib-location>
+	 </taglib>
+	<taglib>
+	  <taglib-uri>http://www.drecom.co.jp/mfps-portal_1_0</taglib-uri>
+	  <taglib-location>/WEB-INF/tld/mfps-portal.tld</taglib-location>
+	 </taglib>
+
+ </jsp-config>
+
+</web-app>

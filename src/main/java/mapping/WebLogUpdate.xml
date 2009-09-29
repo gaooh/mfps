@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WebLogUpdate">
+
+	<typeAlias alias="webLogUpdateInfo" type="jp.co.drecom.mfps.model.dto.WebLogUpdateDto"/>
+
+    <insert id="addPing" parameterClass="webLogUpdateInfo">
+        <![CDATA[
+            INSERT INTO WEBLOGUPDATE
+            (
+                ID,
+                NAME,
+                URL,
+                REGIST_DATE,
+                IP
+            )
+            VALUES(
+                nextval('weblogupdate_id_seq'),
+                #name#,
+                #url#,
+                #registDate#,
+                #ip#
+            );
+        ]]>
+    </insert>
+
+    <select id="issueProcessId" resultClass="java.lang.Long" >
+            <![CDATA[
+				select nextval('weblogupdate_process_id_seq')
+			 ]]>
+    </select>
+
+    <select id="findByProcessId" resultClass="webLogUpdateInfo" parameterClass="java.lang.Long">
+            <![CDATA[
+				SELECT
+					*
+				FROM
+					WEBLOGUPDATE
+				WHERE
+					PROCESS_ID = #value#
+			 ]]>
+    </select>
+
+	<update id="updateForByHighPriorityRecode" parameterClass="java.util.HashMap">
+        <![CDATA[
+            UPDATE WEBLOGUPDATE SET
+            	PROCESS_START = #process_start#,
+				PROCESS_COUNT = PROCESS_COUNT + 1,
+				PROCESS_ID = #process_id#
+        	WHERE ID = (
+				SELECT
+					ID
+				FROM
+					WEBLOGUPDATE
+				WHERE
+					PROCESS_ID IS NULL
+				AND
+					PROCESS_END IS NULL
+				AND
+					( PROCESS_START IS NULL OR PROCESS_START < #process_start_limit# )
+				AND
+					PROCESS_COUNT < #process_count_limit#
+				ORDER BY
+					REGIST_DATE
+				LIMIT 1
+			)
+        ]]>
+    </update>
+
+
+
+	<update id="updateProcessEnd" parameterClass="java.util.HashMap">
+        <![CDATA[
+            UPDATE WEBLOGUPDATE SET
+            	PROCESS_END = #process_end#
+        	WHERE ID = #id#
+        ]]>
+    </update>
+</sqlMap>

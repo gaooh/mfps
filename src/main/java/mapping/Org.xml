@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Org">
+
+	<typeAlias alias="org" type="jp.co.drecom.mfps.model.dto.OrgDto"/>
+
+	<insert id="insert" parameterClass="org">
+        <![CDATA[
+            INSERT INTO HCARD_ORG
+            (
+                ID,
+                ORGANIZATION_NAME,
+                ORGANIZATION_UNIT
+            )
+            VALUES(
+                nextval('org_id_seq'),
+                #organizationName#,
+                #organizationUnit#
+            );
+        ]]>
+
+		<selectKey resultClass="long" keyProperty="id">
+            <![CDATA[
+				select currval('org_id_seq')
+			 ]]>
+        </selectKey>
+
+    </insert>
+</sqlMap>

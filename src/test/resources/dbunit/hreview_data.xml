@@ -1,0 +1,17 @@
+<dataset>
+	<hreview microformats_id="0" dtreviewed="" description="すごい" item_id="3" license="自由"  permalink="http://www.drecom.jp/" rating="3" />
+	<hreview microformats_id="1" dtreviewed="" description="すごい" item_id="3" license="自由"  permalink="http://www.drecom.jp/" rating="3" />
+	<hreview microformats_id="2" dtreviewed="" description="すごい" item_id="3" license="自由"  permalink="http://www.drecom.jp/" rating="3" />
+	<hreview microformats_id="3" dtreviewed="" description="すごい" item_id="3" license="自由"  permalink="http://www.drecom.jp/" rating="3" />
+	<hreview microformats_id="4" dtreviewed="" description="すごい" item_id="3" license="自由"  permalink="http://www.drecom.jp/" rating="3" />
+	<hreview microformats_id="5" dtreviewed="" description="すごい" item_id="3" license="自由"  permalink="http://www.drecom.jp/" rating="3" />
+
+	<microformats id="0" type="2" url="http://www.gaooh.com/" regist_date="2003-01-01" update_date="2004-01-01" checksum="test_hash" />
+	<microformats id="1" type="2" url="http://www.gaooh.com/" regist_date="2004-01-01" update_date="2004-01-01" checksum="test_hash" />
+	<microformats id="2" type="2" url="http://www.gaooh.com/" regist_date="2005-01-01" update_date="2004-01-01" checksum="test_hash" />
+	<microformats id="3" type="2" url="http://www.gaooh.com/" regist_date="2006-01-01" update_date="2004-01-01" checksum="test_hash" />
+	<microformats id="4" type="2" url="http://www.gaooh.com/" regist_date="2006-01-01" update_date="2004-01-01" checksum="test_hash" />
+	<microformats id="5" type="2" url="http://www.gaooh.com/" regist_date="2006-01-01" update_date="2004-01-01" checksum="test_hash" />
+
+	<hreview_item id="3" type="item_type" url="http://www.gaooh.com/item" photo="http://www.photo/"/>
+</dataset>

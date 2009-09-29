@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Item">
+
+	<typeAlias alias="item" type="jp.co.drecom.mfps.model.dto.ItemDto"/>
+
+	<insert id="insert" parameterClass="item">
+        <![CDATA[
+            INSERT INTO HREVIEW_ITEM
+            (
+                ID,
+                TYPE,
+                URL,
+                PHOTO,
+				HCARD_ID,
+				HCALENDAR_ID
+            )
+            VALUES(
+                nextval('item_id_seq'),
+                #type#,
+                #url#,
+                #photo#,
+				#hcardId#,
+                #hcalendarId#
+            );
+        ]]>
+
+		<selectKey resultClass="long" keyProperty="id">
+            <![CDATA[
+				select currval('item_id_seq')
+			 ]]>
+        </selectKey>
+
+    </insert>
+</sqlMap>

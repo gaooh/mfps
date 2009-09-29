@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Adr">
+
+	<typeAlias alias="adr" type="jp.co.drecom.mfps.model.dto.AdrDto"/>
+
+	<insert id="insert" parameterClass="adr">
+        <![CDATA[
+            INSERT INTO HCARD_ADR
+            (
+                ID,
+                TYPE,
+                POST_OFFICE_BOX,
+                STREET_ADDRESS,
+				EXTENDED_ADDRESS,
+				REGION,
+				LOCALITY,
+				POSTAL_CODE,
+				COUNTRY_NAME
+            )
+            VALUES(
+                nextval('adr_id_seq'),
+                #type#,
+                #postOfficeBox#,
+                #streetAddress#,
+				#extendedAddress#,
+                #region#,
+				#locality#,
+				#postalCode#,
+				#countryName#
+            );
+        ]]>
+
+		<selectKey resultClass="long" keyProperty="id">
+            <![CDATA[
+				select currval('adr_id_seq')
+			 ]]>
+        </selectKey>
+
+    </insert>
+</sqlMap>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="HCalendarCategory">
+
+	<typeAlias alias="hCalendarCategory" type="jp.co.drecom.mfps.model.dto.HCalendarCategoryDto"/>
+
+    <insert id="insert" parameterClass="hCalendarCategory">
+        <![CDATA[
+            INSERT INTO HCALENDAR_CATEGORY
+            (
+				ID,
+                HCALENDAR_ID,
+				CATEGORY,
+                URL
+            )
+            VALUES(
+				nextval('hcalendar_category_id_seq'),
+                #hcalendarId#,
+				#category#,
+                #url#
+            );
+        ]]>
+    </insert>
+
+
+	<select id="findByHCalendarId" resultClass="hCalendarCategory" parameterClass="java.lang.Long" >
+            <![CDATA[
+				SELECT
+					*
+				FROM
+					HCALENDAR_CATEGORY
+				WHERE
+					HCALENDAR_ID = #value#
+			 ]]>
+    </select>
+
+</sqlMap>

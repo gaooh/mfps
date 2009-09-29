@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!DOCTYPE taglib PUBLIC
+    "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+    "http://java.sun.com/j2ee/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>mfps-protal</short-name>
+    <uri>http://www.drecom.co.jp/mfps-portal_1_0</uri>
+    <description>ポータルページ用拡張タグライブラリ</description>
+
+  <tag>
+    <name>timeicon</name>
+    <tag-class>jp.co.drecom.mfps.portal.taglib.TimeIconTag</tag-class>
+    <body-content>JSP</body-content>
+    <description>DTSTARTの時間によってアイコンをかえる</description>
+    <attribute>
+      <name>dtstart</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>dayicon</name>
+    <tag-class>jp.co.drecom.mfps.portal.taglib.DayIconTag</tag-class>
+    <body-content>JSP</body-content>
+    <description>DTSTARTの日によってアイコンをかえる</description>
+    <attribute>
+      <name>dtstart</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+</taglib>

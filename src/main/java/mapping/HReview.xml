@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="HReview">
+
+	<typeAlias alias="hReview" type="jp.co.drecom.mfps.model.dto.HReviewDto"/>
+	<typeAlias alias="hCard" type="jp.co.drecom.mfps.model.dto.HCardDto"/>
+	<typeAlias alias="microformats" type="jp.co.drecom.mfps.model.dto.MicroformatsDto"/>
+
+	<resultMap id="hReviewAll" class="hReview">
+		<result property="microformatsId" column="MICROFORMATS_ID"/>
+		<result property="dtreviewed" column="DTREVIEWED"/>
+		<result property="description" column="DESCRIPTION"/>
+		<result property="itemId" column="ITEM_ID"/>
+		<result property="license" column="LICENSE"/>
+		<result property="permalink" column="PERMALINK"/>
+		<result property="rating" column="RATING"/>
+		<result property="reviewerId" column="REVIEWER_ID"/>
+		<result property="summary" column="SUMMARY"/>
+		<result property="version" column="VERSION"/>
+		<result property="type" column="H_TYPE"/>
+
+		<result property="microformats.id" column="M_ID"/>
+		<result property="microformats.type" column="M_TYPE"/>
+		<result property="microformats.url" column="M_URL"/>
+		<result property="microformats.registDate" column="REGIST_DATE"/>
+		<result property="microformats.updateDate" column="UPDATE_DATE"/>
+		<result property="microformats.checksum" column="CHECKSUM"/>
+
+		<result property="item.id" column="I_ID"/>
+		<result property="item.type" column="I_TYPE"/>
+		<result property="item.url" column="I_URL"/>
+		<result property="item.photo" column="PHOTO"/>
+
+	</resultMap>
+
+    <insert id="insert" parameterClass="hReview">
+        <![CDATA[
+            INSERT INTO HREVIEW
+            (
+                MICROFORMATS_ID,
+				TYPE,
+                DTREVIEWED,
+                DESCRIPTION,
+                ITEM_ID,
+                LICENSE,
+				PERMALINK,
+				REVIEWER_ID,
+				RATING,
+				SUMMARY,
+				VERSION
+            )
+            VALUES(
+                #microformatsId#,
+				#type#,
+                #dtreviewed#,
+                #description#,
+                #itemId#,
+                #license#,
+				#permalink#,
+				#reviewerId#,
+				#rating#,
+				#summary#,
+				#version#
+            );
+        ]]>
+    </insert>
+
+	<select id="findByLatestReview" resultMap="hReviewAll" parameterClass="java.lang.Integer">
+            <![CDATA[
+				SELECT
+					HREVIEW.MICROFORMATS_ID,
+					HREVIEW.DTREVIEWED,
+					HREVIEW.DESCRIPTION,
+					HREVIEW.ITEM_ID,
+					HREVIEW.LICENSE,
+					HREVIEW.PERMALINK,
+					HREVIEW.RATING,
+					HREVIEW.REVIEWER_ID,
+					HREVIEW.SUMMARY,
+					HREVIEW.VERSION,
+					HREVIEW.TYPE AS H_TYPE,
+					MICROFORMATS.ID AS M_ID,
+					MICROFORMATS.TYPE AS M_TYPE,
+					MICROFORMATS.URL AS M_URL,
+					MICROFORMATS.REGIST_DATE,
+					MICROFORMATS.UPDATE_DATE,
+					MICROFORMATS.CHECKSUM,
+					HREVIEW_ITEM.ID AS I_ID,
+					HREVIEW_ITEM.TYPE AS I_TYPE,
+					HREVIEW_ITEM.URL AS I_URL,
+					HREVIEW_ITEM.PHOTO
+				FROM ( HREVIEW LEFT JOIN MICROFORMATS ON MICROFORMATS.ID = HREVIEW.MICROFORMATS_ID )
+					LEFT JOIN HREVIEW_ITEM ON HREVIEW.ITEM_ID = HREVIEW_ITEM.ID
+				WHERE
+					MICROFORMATS.TYPE = 2
+				ORDER BY
+					MICROFORMATS.REGIST_DATE DESC
+				LIMIT #value#
+			 ]]>
+    </select>
+
+
+	<select id="findByReviewCount" resultClass="java.lang.Long" >
+            <![CDATA[
+				SELECT
+					COUNT(*)
+				FROM
+					HREVIEW
+			 ]]>
+    </select>
+</sqlMap>

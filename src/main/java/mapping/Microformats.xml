@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Microformats">
+
+	<typeAlias alias="microformats" type="jp.co.drecom.mfps.model.dto.MicroformatsDto"/>
+
+	<insert id="insert" parameterClass="microformats">
+        <![CDATA[
+            INSERT INTO MICROFORMATS
+            (
+                ID,
+                TYPE,
+                URL,
+                REGIST_DATE,
+                UPDATE_DATE,
+				CHECKSUM
+            )
+            VALUES(
+                nextval('microformats_id_seq'),
+                #type#,
+				#url#,
+                #registDate#,
+                #updateDate#,
+                #checksum#
+            );
+        ]]>
+
+		<selectKey resultClass="long" keyProperty="id">
+            <![CDATA[
+				select currval('microformats_id_seq')
+			 ]]>
+        </selectKey>
+
+    </insert>
+
+    <select id="findByHash" parameterClass="java.util.Map" resultClass="microformats">
+        <![CDATA[
+            SELECT
+				*
+			FROM
+				MICROFORMATS
+			WHERE
+				URL = #url#
+			AND
+				CHECKSUM = #checksum#
+        ]]>
+    </select>
+
+</sqlMap>

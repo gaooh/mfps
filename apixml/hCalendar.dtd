@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated from sample.xml by XMLBuddy -->
+<!ELEMENT APIVersion (#PCDATA)>
+<!ELEMENT DisplayFrom (#PCDATA)>
+<!ELEMENT DisplayPerPage (#PCDATA)>
+<!ELEMENT NumberOfResults EMPTY>
+<!ELEMENT Results (NumberOfResults,DisplayPerPage,DisplayFrom,APIVersion,hCalendar+)>
+<!ATTLIST Results xmlns NMTOKEN #REQUIRED>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT dtend (#PCDATA)>
+<!ELEMENT dtstamp (#PCDATA)>
+<!ELEMENT dtstart (#PCDATA)>
+<!ELEMENT fromurl (#PCDATA)>
+<!ELEMENT hCalendar (fromurl,updateDate,url,description,location,status,summary,dtstart,dtstamp,dtend,uid)>
+<!ELEMENT location (#PCDATA)>
+<!ELEMENT status (#PCDATA)>
+<!ELEMENT summary (#PCDATA)>
+<!ELEMENT uid (#PCDATA)>
+<!ELEMENT updateDate (#PCDATA)>
+<!ELEMENT url (#PCDATA)>

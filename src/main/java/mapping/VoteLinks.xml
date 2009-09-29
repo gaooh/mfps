@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="VoteLinks">
+
+	<typeAlias alias="voteLinks" type="jp.co.drecom.mfps.model.dto.VoteLinksDto"/>
+
+    <insert id="insert" parameterClass="voteLinks">
+        <![CDATA[
+            INSERT INTO VOTE_LINKS
+            (
+                MICROFORMATS_ID,
+				TYPE,
+                URL,
+				TITLE
+            )
+            VALUES(
+                #microformatsId#,
+				#type#,
+                #url#,
+                #title#
+            );
+        ]]>
+    </insert>
+</sqlMap>

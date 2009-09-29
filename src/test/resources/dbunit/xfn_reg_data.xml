@@ -1,0 +1,20 @@
+<dataset>
+	<xfn_reg id="0" name="contact" />
+	<xfn_reg id="1" name="acquaintance" />
+	<xfn_reg id="2" name="friend" />
+	<xfn_reg id="3" name="met" />
+	<xfn_reg id="4" name="co-worker" />
+	<xfn_reg id="5" name="colleague" />
+	<xfn_reg id="6" name="co-resident" />
+	<xfn_reg id="7" name="neighbor" />
+	<xfn_reg id="8" name="child" />
+	<xfn_reg id="9" name="parent" />
+	<xfn_reg id="10" name="sibling" />
+	<xfn_reg id="11" name="spouse" />
+	<xfn_reg id="12" name="kin" />
+	<xfn_reg id="13" name="muse" />
+	<xfn_reg id="14" name="crush" />
+	<xfn_reg id="15" name="date" />
+	<xfn_reg id="16" name="sweetheart" />
+	<xfn_reg id="17" name="me" />
+</dataset>

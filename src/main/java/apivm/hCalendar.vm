@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<Results xmlns="mfps">
+	<NumberOfResults>$!{hCalendars.size}</NumberOfResults>
+	<DisplayPerPage>$!{perPage}</DisplayPerPage>
+	<DisplayFrom>$!{pageNum}</DisplayFrom>
+	<APIVersion>$!{version}</APIVersion>
+	#foreach($hCalendar in $hCalendars)
+	<hCalendar>
+		<fromurl>$!{hCalendar.microformats.url}</fromurl>
+		<updateDate>$!{hCalendar.microformats.updateDate}</updateDate>
+		<url>$!{hCalendar.url}</url>
+		<description>$!{hCalendar.description}</description>
+		<location>$!{hCalendar.location}</location>
+		<status>$!{hCalendar.status}</status>
+		<summary>$!{hCalendar.summary}</summary>
+		<dtstart>$!{hCalendar.dtstart}</dtstart>
+		<dtstamp>$!{hCalendar.dtstamp}</dtstamp>
+		<dtend>$!{hCalendar.dtend}</dtend>
+		<uid>$!{hCalendar.uid}</uid>
+		<categories>
+			#foreach($category in ${hCalendar.categories})
+				<category>$!{category.category}</category>
+				<url>$!{category.url}</url>
+			#end
+		</categories>
+	</hCalendar>
+	#end
+</Results>

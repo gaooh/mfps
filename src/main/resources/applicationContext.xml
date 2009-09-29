@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!-- ドライバクラス名 -->
+	<property name="driverClassName"><value>org.postgresql.Driver</value></property>
+	<!-- URL -->
+	<property name="url"><value>jdbc:postgresql://localhost:5432/mfps</value></property>
+	<!-- ユーザ名 -->
+	<property name="username"><value>blog</value></property>
+	<!-- パスワード -->
+	<property name="password"><value>drecom</value></property>
+  </bean>
+
+  <!-- トランザクション管理 -->
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource">
+      <ref bean="dataSource"/>
+    </property>
+  </bean>
+
+  <bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+    <property name="configLocation"><value>sqlMapConfig.xml</value></property>
+  </bean>
+
+  <!--
+    SqlMapClientDaoSupport を継承する DAO は、
+    以下の２つのプロパティにより SqlMapClientTemplate を初期化する。
+  -->
+  <bean id="webLogUpdateDao" class="jp.co.drecom.mfps.model.dao.impl.WebLogUpdateDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="microformatsDao" class="jp.co.drecom.mfps.model.dao.impl.MicroformatsDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="hCardDao" class="jp.co.drecom.mfps.model.dao.impl.HCardDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="geoDao" class="jp.co.drecom.mfps.model.dao.impl.GeoDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="adrDao" class="jp.co.drecom.mfps.model.dao.impl.AdrDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="nDao" class="jp.co.drecom.mfps.model.dao.impl.NDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="orgDao" class="jp.co.drecom.mfps.model.dao.impl.OrgDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="hReviewDao" class="jp.co.drecom.mfps.model.dao.impl.HReviewDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="itemDao" class="jp.co.drecom.mfps.model.dao.impl.ItemDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="hCalendarDao" class="jp.co.drecom.mfps.model.dao.impl.HCalendarDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="hCalendarCategoryDao" class="jp.co.drecom.mfps.model.dao.impl.HCalendarCategoryDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="voteLinksDao" class="jp.co.drecom.mfps.model.dao.impl.VoteLinksDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="XFNDao" class="jp.co.drecom.mfps.model.dao.impl.XFNDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="XFNRegDao" class="jp.co.drecom.mfps.model.dao.impl.XFNRegDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+  <bean id="XFNToRegDao" class="jp.co.drecom.mfps.model.dao.impl.XFNToRegDaoImpl">
+    <property name="dataSource"><ref bean="dataSource" /></property>
+    <property name="sqlMapClient"><ref bean="sqlMapClient" /></property>
+  </bean>
+
+</beans>

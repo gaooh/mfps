@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMapConfig PUBLIC
+  "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+  <!-- トランザクションマネージャやデータソースは SpringFramework で管理 -->
+
+  <settings
+    maxTransactions="5"
+    maxRequests="50"
+    maxSessions="25"
+    cacheModelsEnabled="true"
+    lazyLoadingEnabled="true"
+    useStatementNamespaces="true" />
+
+  <!-- SQLマッピングファイル -->
+
+  <sqlMap resource="mapping/WebLogUpdate.xml" />
+  <sqlMap resource="mapping/HCard.xml" />
+  <sqlMap resource="mapping/Microformats.xml" />
+  <sqlMap resource="mapping/Geo.xml" />
+  <sqlMap resource="mapping/Adr.xml" />
+  <sqlMap resource="mapping/N.xml" />
+  <sqlMap resource="mapping/Org.xml" />
+  <sqlMap resource="mapping/HReview.xml" />
+  <sqlMap resource="mapping/Item.xml" />
+  <sqlMap resource="mapping/HCalendar.xml" />
+  <sqlMap resource="mapping/HCalendarCategory.xml" />
+  <sqlMap resource="mapping/VoteLinks.xml" />
+  <sqlMap resource="mapping/XFN.xml" />
+  <sqlMap resource="mapping/XFNReg.xml" />
+  <sqlMap resource="mapping/XFNToReg.xml" />
+
+</sqlMapConfig>

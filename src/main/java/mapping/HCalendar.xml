@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="HCalendar">
+
+	<typeAlias alias="hCalendar" type="jp.co.drecom.mfps.model.dto.HCalendarDto"/>
+	<typeAlias alias="microformats" type="jp.co.drecom.mfps.model.dto.MicroformatsDto"/>
+
+	<resultMap id="hCalendarAll" class="hCalendar">
+		<result property="microformatsId" column="MICROFORMATS_ID"/>
+		<result property="description" column="DESCRIPTION"/>
+		<result property="location" column="LOCATION"/>
+		<result property="status" column="STATUS"/>
+		<result property="summary" column="SUMMARY"/>
+		<result property="url" column="H_URL"/>
+		<result property="dtstart" column="DTSTART" />
+		<result property="dtstamp" column="DTSTAMP" />
+		<result property="dtend" column="DTEND" />
+		<result property="uid" column="UID"/>
+
+		<result property="microformats.id" column="M_ID"/>
+		<result property="microformats.type" column="M_TYPE"/>
+		<result property="microformats.url" column="M_URL"/>
+		<result property="microformats.registDate" column="REGIST_DATE"/>
+		<result property="microformats.updateDate" column="UPDATE_DATE"/>
+		<result property="microformats.checksum" column="CHECKSUM"/>
+
+	</resultMap>
+
+    <insert id="insert" parameterClass="hCalendar">
+        <![CDATA[
+            INSERT INTO HCALENDAR
+            (
+                MICROFORMATS_ID,
+				DESCRIPTION,
+                LOCATION,
+                STATUS,
+                SUMMARY,
+                URL,
+				DTSTART,
+				DTSTAMP,
+				DTEND,
+				UID
+            )
+            VALUES(
+                #microformatsId#,
+				#description#,
+                #location#,
+                #status#,
+                #summary#,
+                #url#,
+				#dtstart#,
+				#dtstamp#,
+				#dtend#,
+				#uid#
+            );
+        ]]>
+    </insert>
+
+	<select id="findByEventRandom" resultMap="hCalendarAll" parameterClass="java.util.Map">
+            <![CDATA[
+				SELECT
+					HCALENDAR.MICROFORMATS_ID,
+					HCALENDAR.DESCRIPTION,
+					HCALENDAR.LOCATION,
+					HCALENDAR.STATUS,
+					HCALENDAR.SUMMARY,
+					HCALENDAR.URL AS H_URL,
+					HCALENDAR.DTSTART,
+					HCALENDAR.DTSTAMP,
+					HCALENDAR.DTEND,
+					HCALENDAR.UID,
+					MICROFORMATS.ID AS M_ID,
+					MICROFORMATS.TYPE AS M_TYPE,
+					MICROFORMATS.URL AS M_URL,
+					MICROFORMATS.REGIST_DATE,
+					MICROFORMATS.UPDATE_DATE,
+					MICROFORMATS.CHECKSUM
+				FROM
+					HCALENDAR LEFT JOIN MICROFORMATS ON MICROFORMATS.ID = HCALENDAR.MICROFORMATS_ID
+				WHERE
+					MICROFORMATS.TYPE = 1
+				AND
+					to_char(DTSTART, 'YYYY-MM-DD') >= #date#
+				AND
+					( DTEND IS NULL OR to_char(DTEND, 'YYYY-MM-DD') >= #date# )
+				ORDER BY
+					random()
+				LIMIT #count#
+			 ]]>
+    </select>
+
+	<select id="findByDateEventRandom" resultMap="hCalendarAll" parameterClass="java.util.Map">
+            <![CDATA[
+				SELECT
+					HCALENDAR.MICROFORMATS_ID,
+					HCALENDAR.DESCRIPTION,
+					HCALENDAR.LOCATION,
+					HCALENDAR.STATUS,
+					HCALENDAR.SUMMARY,
+					HCALENDAR.URL AS H_URL,
+					HCALENDAR.DTSTART,
+					HCALENDAR.DTSTAMP,
+					HCALENDAR.DTEND,
+					HCALENDAR.UID,
+					MICROFORMATS.ID AS M_ID,
+					MICROFORMATS.TYPE AS M_TYPE,
+					MICROFORMATS.URL AS M_URL,
+					MICROFORMATS.REGIST_DATE,
+					MICROFORMATS.UPDATE_DATE,
+					MICROFORMATS.CHECKSUM
+				FROM
+					HCALENDAR LEFT JOIN MICROFORMATS ON MICROFORMATS.ID = HCALENDAR.MICROFORMATS_ID
+				WHERE
+					MICROFORMATS.TYPE = 1
+				AND
+					to_char(DTSTART, 'YYYY-MM-DD') = #date#
+				ORDER BY
+					random()
+				LIMIT #count#
+			 ]]>
+    </select>
+
+	<select id="findByEventCount" resultClass="java.lang.Long" >
+            <![CDATA[
+				SELECT
+					COUNT(*)
+				FROM
+					HCALENDAR
+			 ]]>
+    </select>
+
+
+	<select id="findByDateEventCount" resultClass="java.lang.Long" >
+            <![CDATA[
+				SELECT
+					COUNT(*)
+				FROM
+					HCALENDAR
+				WHERE
+					to_char(DTSTART, 'YYYY-MM-DD') = #date#
+			 ]]>
+    </select>
+
+	<select id="findByCondition" parameterClass="jp.co.drecom.mfps.model.dto.request.HCalendarSearchDto" resultMap="hCalendarAll" >
+            SELECT
+				DISTINCT ( HCALENDAR.MICROFORMATS_ID ),
+				HCALENDAR.DESCRIPTION,
+				HCALENDAR.LOCATION,
+				HCALENDAR.STATUS,
+				HCALENDAR.SUMMARY,
+				HCALENDAR.URL AS H_URL,
+				HCALENDAR.DTSTART,
+				HCALENDAR.DTSTAMP,
+				HCALENDAR.DTEND,
+				HCALENDAR.UID,
+				MICROFORMATS.ID AS M_ID,
+				MICROFORMATS.TYPE AS M_TYPE,
+				MICROFORMATS.URL AS M_URL,
+				MICROFORMATS.REGIST_DATE,
+				MICROFORMATS.UPDATE_DATE,
+				MICROFORMATS.CHECKSUM
+			FROM
+				( HCALENDAR LEFT JOIN MICROFORMATS ON MICROFORMATS.ID = HCALENDAR.MICROFORMATS_ID )
+				LEFT JOIN HCALENDAR_CATEGORY ON HCALENDAR.MICROFORMATS_ID = HCALENDAR_CATEGORY.HCALENDAR_ID
+			WHERE
+				MICROFORMATS.TYPE = 1
+			<dynamic prepend="AND">
+	            <isNotNull property="fromurl">
+	                MICROFORMATS.URL like '$fromurl$%'
+	            </isNotNull>
+        	</dynamic>
+			<dynamic prepend="AND">
+	            <isNotNull property="url">
+	                HCALENDAR.URL = #url#
+	            </isNotNull>
+        	</dynamic>
+			<dynamic prepend="AND">
+				<isNull property="dtstart">
+					<isNull property="type">
+					   DTSTART IS NOT NULL AND DTSTART >= now()
+					</isNull>
+					<isNotNull property="type">
+						<isNotEqual property="type" compareValue="all">
+						   DTSTART IS NOT NULL
+						</isNotEqual>
+					</isNotNull>
+	            </isNull>
+	            <isNotNull property="dtstart">
+	                to_char(DTSTART, 'YYYY-MM-DD') = #dtstart#
+	            </isNotNull>
+        	</dynamic>
+			<dynamic prepend="AND">
+	            <isNotNull property="dtend">
+	                to_char(DTEND, 'YYYY-MM-DD') = #dtend#
+	            </isNotNull>
+        	</dynamic>
+			<dynamic prepend="AND">
+	            <isNotNull property="category">
+	                HCALENDAR_CATEGORY.CATEGORY like '%$category$%'
+	            </isNotNull>
+        	</dynamic>
+			ORDER BY
+				MICROFORMATS.REGIST_DATE
+			LIMIT #limit#
+			OFFSET #offset#
+    </select>
+
+
+</sqlMap>

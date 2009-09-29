@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="HCard">
+
+	<typeAlias alias="hCard" type="jp.co.drecom.mfps.model.dto.HCardDto"/>
+	<typeAlias alias="adr" type="jp.co.drecom.mfps.model.dto.AdrDto"/>
+	<typeAlias alias="org" type="jp.co.drecom.mfps.model.dto.OrgDto"/>
+	<typeAlias alias="n" type="jp.co.drecom.mfps.model.dto.NDto"/>
+	<typeAlias alias="geo" type="jp.co.drecom.mfps.model.dto.GeoDto"/>
+
+	<resultMap id="hCardAll" class="hCard">
+		<result property="microformatsId" column="MICROFORMATS_ID"/>
+		<result property="title" column="TITLE"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="photo" column="PHOTO"/>
+		<result property="bday" column="BDAY"/>
+		<result property="url" column="URL"/>
+		<result property="logo" column="LOGO"/>
+		<result property="note" column="NOTE"/>
+		<result property="rev" column="REV"/>
+		<result property="sortString" column="SORT_STRING"/>
+
+		<result property="geo.latitude" column="LATITUDE"/>
+		<result property="geo.longitude" column="LONGITUDE"/>
+
+		<result property="n.id" column="ID"/>
+		<result property="n.familyName" column="FAMILY_NAME"/>
+		<result property="n.givenName" column="GIVEN_NAME"/>
+		<result property="n.additionalName" column="ADDITIONAL_NAME"/>
+		<result property="n.honorificPrefix" column="HONORIFIC_PREFIX"/>
+		<result property="n.honorificSuffix" column="HONORIFIC_SUFFIX"/>
+
+		<result property="org.id" column="ID"/>
+		<result property="org.organizationName" column="ORGANIZATION_NAME"/>
+		<result property="org.organizationUnit" column="ORGANIZATION_UNIT"/>
+
+	</resultMap>
+
+    <insert id="insert" parameterClass="hCard">
+        <![CDATA[
+            INSERT INTO HCARD
+            (
+                MICROFORMATS_ID,
+                TITLE,
+                NICKNAME,
+                EMAIL,
+                PHOTO,
+				BDAY,
+				URL,
+				LOGO,
+				NOTE,
+				REV,
+				SORT_STRING,
+				GEO_ID,
+				ADR_ID,
+				N_ID,
+				ORG_ID
+            )
+            VALUES(
+                #microformatsId#,
+                #title#,
+                #nickname#,
+                #email#,
+                #photo#,
+				#bday#,
+				#url#,
+				#logo#,
+				#note#,
+				#rev#,
+				#sortString#,
+				#geoId#,
+				#adrId#,
+				#NId#,
+				#orgId#
+            );
+        ]]>
+    </insert>
+
+	<select id="findByMicroformatsId" resultMap="hCardAll" parameterClass="java.lang.Long">
+            <![CDATA[
+				SELECT
+					*
+				FROM ( ( ( HCARD LEFT JOIN HCARD_ADR ON HCARD.ADR_ID = HCARD_ADR.ID )
+					LEFT JOIN HCARD_N ON HCARD.N_ID = HCARD_N.ID )
+					LEFT JOIN HCARD_ORG ON HCARD.ORG_ID = HCARD_ORG.ID )
+					LEFT JOIN GEO ON HCARD.GEO_ID = GEO.MICROFORMATS_ID
+				WHERE
+					HCARD.MICROFORMATS_ID = #value#
+			 ]]>
+    </select>
+
+
+</sqlMap>

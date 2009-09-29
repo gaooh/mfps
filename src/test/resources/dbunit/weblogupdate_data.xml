@@ -1,0 +1,7 @@
+<dataset>
+	<weblogupdate id="1" name="name1" url="http://www.drecom.jp1" ip="127.0.0.1" regist_date="2004-01-01" process_start="2004-01-01" process_count="1" />
+	<weblogupdate id="2" name="onaji_hiduke_count_tiisai" url="http://www.drecom.jp2" ip="127.0.0.1"  regist_date="2005-01-01"  process_count="0"/>
+	<weblogupdate id="3" name="onaji_hiduke_demo_count_dekai" url="http://www.drecom.jp3" ip="127.0.0.1" process_start="2004-01-01" regist_date="2005-01-01" process_end="2004-01-01" process_count="2"/>
+	<weblogupdate id="4" name="target" url="http://www.drecom.jp4" ip="127.0.0.1" regist_date="2004-01-01"  process_count="0"/>
+	<weblogupdate id="5" name="count_over" url="http://www.drecom.jp5" ip="127.0.0.1" regist_date="2003-01-01" process_start="2004-01-01" process_end="2004-01-01" process_count="100"/>
+</dataset>

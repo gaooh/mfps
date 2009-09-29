@@ -1,0 +1,15 @@
+<dataset>
+	<microformats id="0" type="1" url="http://www.gaooh.com/" regist_date="2003-01-01" update_date="2004-01-01" checksum="test_hash" />
+	<microformats id="1" type="1" url="http://www.gaooh.com/" regist_date="2004-01-01" update_date="2004-01-01" checksum="test_hash" />
+	<microformats id="2" type="1" url="http://www.gaooh.com/" regist_date="2005-01-01" update_date="2004-01-01" checksum="test_hash" />
+	<microformats id="3" type="1" url="http://www.gaooh.com/" regist_date="2006-01-01" update_date="2004-01-01" checksum="test_hash" />
+	<microformats id="4" type="1" url="http://www.gaooh.com/" regist_date="2006-01-01" update_date="2004-01-01" checksum="test_hash" />
+	<microformats id="5" type="1" url="http://www.gaooh.com/" regist_date="2006-01-01" update_date="2004-01-01" checksum="test_hash" />
+
+	<hcalendar microformats_id ="0" description = "ですくりぷちょん" location = "ばしょとか" status ="状態って" summary="さまってみる" url="http://www.drecom.co.jp" dtstart="2004-01-10" dtstamp = "2004-01-10" uid="uid" />
+	<hcalendar microformats_id ="1" description = "ですくりぷちょん12" location = "ばしょとか" status ="状態って" summary="さまってみる" url="http://www.drecom.co.jp" dtstart="2007-02-07" dtstamp = "2004-01-10" uid="uid" />
+	<hcalendar microformats_id ="2" description = "ですくりぷちょん213" location = "ばしょとか" status ="状態って" summary="さまってみる" url="http://www.drecom.co.jp" dtstart="2007-02-07"  dtstamp = "2004-01-10" uid="uid" />
+	<hcalendar microformats_id ="3" description = "ですくりぷちょん" location = "ばしょとか" status ="状態って" summary="さまってみる" url="http://www.drecom.co.jp" dtstart="2004-01-10"   dtstamp = "2004-01-10" uid="uid" />
+	<hcalendar microformats_id ="4" description = "ですくりぷちょん213" location = "ばしょとか" status ="状態って" summary="さまってみる" url="http://www.drecom.co.jp" dtstart="2007-02-07 11:00:21"  dtstamp = "2004-01-10" uid="uid" />
+	<hcalendar microformats_id ="5" description = "ですくりぷちょん" location = "ばしょとか" status ="状態って" summary="さまってみる" url="http://www.drecom.co.jp" dtstart="2007-02-08 11:00:21"  dtstamp= "2004-01-10" uid="uid" />
+</dataset>

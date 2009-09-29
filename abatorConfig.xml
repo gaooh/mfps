@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE abatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Abator for iBATIS Configuration 1.0//EN"
+  "http://ibatis.apache.org/dtd/abator-config_1_0.dtd">
+
+<abatorConfiguration>
+  <abatorContext>    <!-- TODO: Add Database Connection Information -->
+    <jdbcConnection driverClass="org.postgresql.Driver"
+        connectionURL="jdbc:postgresql://localhost:5432/mfps"
+        userId="blog"
+        password="drecom">
+      <classPathEntry location="D:\home\Java\lib\postgresql-jdbc-8.1-407.src\postgresql-8.1-407.jdbc3.jar" />
+    </jdbcConnection>
+
+    <javaModelGenerator targetPackage="jp.co.drecom.mfps.model.dto" targetProject="mfps" />
+    <sqlMapGenerator targetPackage="jp.co.drecom.mfps.model.dao" targetProject="mfps" />
+    <daoGenerator type="IBATIS" targetPackage="jp.co.drecom.mfps.model.dao" targetProject="mfps" />
+
+    <table schema="public" tableName="webLogUpdate">
+      <columnOverride column="id" property="id" javaType="int" jdbcType="INTEGER" />
+	  <columnOverride column="name" property="name" javaType="String" jdbcType="VARCHAR" />
+	  <columnOverride column="url" property="url" javaType="String" jdbcType="VARCHAR" />
+	  <columnOverride column="regist_date" property="registDate" javaType="java.sql.Date" jdbcType="TIMESTAMPE" />
+	  <columnOverride column="ip" property="ip" javaType="String" jdbcType="VARCHAR" />
+    </table>
+
+  </abatorContext>
+</abatorConfiguration>
